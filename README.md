@@ -208,7 +208,7 @@ All routes are prefixed with `/api`.
 - **POST** `/auth/login` → Authenticate and receive JWT token  
 - **GET** `/auth/me` → Get current user details (requires JWT)
 
-Register a new user**
+**Register a new user**  
 Content-Type: application/json
 ```http
 POST http://localhost:8081/api/auth/register
@@ -216,11 +216,17 @@ POST http://localhost:8081/api/auth/register
 ```http
 {
   "email": "ecommerce@example.com",
-  "password": "securePass123"
-  "role": "ADMIN" or "role": "CUSTOMER"
+  "password": "securePass123",
+  "role": "ADMIN"
+}
+or
+{
+  "email": "ecommerce@example.com",
+  "password": "securePass123",
+  "role": "CUSTOMER"
 }
 ```
-Login a user if registered**
+**Login a user if registered**  
 Content-Type: application/json
 ```http
 POST http://localhost:8081/auth/login
@@ -231,7 +237,7 @@ POST http://localhost:8081/auth/login
    "password": "securePass123"
 }
 ```
-Admin Dashboard Aggregations 
+**Admin Dashboard Aggregations**   
 Content-Type: response/json
 ```http
 GET http://localhost:8081/api/admin/metrics
@@ -269,7 +275,8 @@ If you’ve made it this far:
 
 Every contribution, feedback, or even a ⭐ on GitHub helps keep the project alive and growing.  
 Let’s keep coding, keep learning, and keep building amazing things together!
-----
+
+---
 
 
 
