@@ -1,4 +1,4 @@
-# 🌟 Spring Boot E‑Commerce Backend
+# 🌟 Spring Boot E‑Commerce Backend Project
 
 Welcome to the **Spring Boot E‑Commerce Backend** project!  
 This repository is designed to showcase a **production‑grade, secure, and scalable backend** built with Java 17, Spring Boot, JPA/Hibernate, and JWT authentication.  
@@ -236,7 +236,9 @@ POST http://localhost:8081/api/auth/register
   "password": "securePass123",
   "role": "ADMIN"
 }
+```
 or
+```http
 {
   "email": "ecommerce@example.com",
   "password": "securePass123",
