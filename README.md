@@ -29,6 +29,23 @@ This Spring Boot E‑commerce Backend is an intermediate‑level project designe
 - Multiple databases across profiles
  Multiple databases across profiles
 
+## 📂 Project Structure
+
+- **src/main/java/com/ecommerce**
+  - config → App configuration (CORS, JWT filters, beans)
+  - controller → REST endpoints (Auth, Products, Cart, Orders, Users)
+  - dto → Request/response payloads
+  - entity → JPA entities (User, Product, Cart, Order, etc.)
+  - exception → Custom exceptions and global handler
+  - repository → JPA repositories (method naming, JPQL)
+  - security → JWT provider, filters, and config
+  - service → Business logic layer
+- **src/main/resources**
+  - application.yml → Multi-profile config (dev/test/prod)
+- **src/test/java/com/ecommerce** → Unit and integration tests
+- **pom.xml** → Maven build and dependencies
+- **README.md** → Documentation
+
 ## 🗂️ Domain Model
 
 The backend models key components of an e-commerce system with well-defined relationships:
