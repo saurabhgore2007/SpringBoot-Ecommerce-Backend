@@ -185,7 +185,7 @@ Update your profile-specific configuration files with correct database credentia
 | Cart       |POST    | `/api/cart/items`               | Add item to cart               | 
 | Cart       |PUT     | `/api/cart/items/{itemId}`      | Update item quantity           |
 | Cart       |DELETE  | `/api/cart/items/{itemId}`      | Remove item                    |
-| Cart       |DELETE  | `/api/cart/clear`               | Clear cart                     |
+| Cart       |DELETE  | `/api/cart/items/clear`               | Clear cart                     |
 | Orders     |POST    | `/api/orders`                   | Create order from cart         |
 | Orders     |GET     | `/api/orders`                   | List my orders                 | 
 | Orders     |GET     | `/api/orders/{id}`              | Get order details              |
