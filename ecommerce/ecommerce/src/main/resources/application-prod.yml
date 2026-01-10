@@ -1,0 +1,19 @@
+spring: 
+  datasource: 
+    url: jdbc:postgresql://localhost:2543/ecommerce_prod 
+    username: prod_user 
+    password: securePassword123 
+  jpa: 
+    properties: 
+      hibernate: 
+        dialect: org.hibernate.dialect.PostgreSQLDialect 
+    hibernate: 
+      ddl-auto: update 
+ 
+jwt: 
+  secret: ${JWT_SECRET:myDefaultDevSecretKey12345678901234567890} 
+  issuer: "ecommerce" 
+  expiry-minutes: 120 
+ 
+server: 
+  port: 8080
