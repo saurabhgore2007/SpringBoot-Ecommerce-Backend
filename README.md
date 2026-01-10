@@ -153,18 +153,39 @@ Update your profile-specific configuration files with correct database credentia
    - Base URL → http://localhost:8080/api (or http://yourdomain.com/api)
 
   
-  ### 6. Access APIs
+ ### 6. Access APIs
    Use Postman or any REST client to call endpoints.
    Example:
    POST http://localhost:8081/api/auth/register
 
-  ### 7. Frontend Integration
+ ### 7. Frontend Integration
    - Dev profile allows requests from http://localhost:3000 (React frontend).
    - In production, update allowed origins to your deployed frontend domain.
 
+ ## 🛒 Cart & Inventory Management
+
+ Our e‑commerce backend ensures **accurate inventory tracking** by synchronizing cart operations with product stock:
+
+ - **Add to Cart** → Product stock decreases by the quantity added.  
+ - **Update Cart Item Quantity** →  
+   - If quantity increases, stock decreases accordingly.  
+   - If quantity decreases, stock is restored.  
+ - **Remove Item from Cart** → Product stock is restored by the removed quantity.  
+ - **Clear Cart** → All items are removed and their stock is fully restored.  
+
+ ### 🔧 Why this matters
+ - Prevents **overselling** by reserving stock when items are added.  
+ - Releases stock back to inventory when items are removed or carts are abandoned.  
+ - Ensures **transactional safety** with `@Transactional` — if any operation fails, both cart and stock changes roll back.  
+ - Demonstrates **real-world business logic** beyond simple CRUD.
+
+ ### 📌 Example Flow
+ 1. User adds 2 units of Product A → stock decreases from 10 → 8  
+ 2. User updates quantity to 3 → stock decreases from 8 → 7  
+ 3. User removes Product A → stock restored → 10  
+ 4. User clears cart → all reserved stock is restored
 
 ## 🔑 API Endpoints (Highlights)
-
 
 | Area       | Method | Endpoint                        | Purpose                        |
 |------------|--------|---------------------------------|--------------------------------|
@@ -214,6 +235,22 @@ if (json.token && json.token.includes(".")) {
     console.warn("Login response did not contain a valid JWT.");
 }
 ```
+
+## 📬 Postman API Collection
+
+You can test all backend endpoints using our Postman collection:
+
+- [📦 Download Collection JSON](postman/ecommerce-backend-apis.json)
+- [🔗 View on Postman](https://saurabhgore44-134748.postman.co/workspace/Saurabh-Gore's-Workspace~15a1118a-a753-4318-8a61-4c8955de6b2f/collection/49247456-f033d9b7-9428-4546-b49a-915a8d077799?action=share&creator=49247456&active-environment=49247456-d3e13478-fc7e-4d46-96fb-484b4217bce2)
+
+> Includes endpoints for users, products, cart, orders, payments, and admin metrics.
+
+### ▶️ How to Import into Postman
+1. Download the collection JSON from the link above.
+2. Open Postman → click **Import**.
+3. Select the downloaded file.
+4. Start testing the APIs with the included requests.
+
 ## 📡 Sample APIs
 
 Here are some example requests you can try with Postman or curl.  
@@ -256,6 +293,30 @@ POST http://localhost:8081/auth/login
    "password": "securePass123"
 }
 ```
+**Cart Add Request**  
+Content-Type: application/json
+```http
+POST http://localhost:8081/api/cart/items?productId=1&qty=10
+```
+**Cart Items Added Respomse**  
+content Type: application/json
+```http
+{
+    "id": 1,
+    "items": [
+        {
+            "id": 1,
+            "productId": 1,
+            "productName": "",
+            "quantity": 0,
+            "priceAtAdd":0.00
+        }
+        ]
+    "totalAmount": 0.00,
+    "updatedAt": "2026-01-10T10:04:16.262142+05:30"
+}
+```
+
 **Admin Dashboard Aggregations**   
 Content-Type: response/json
 ```http
