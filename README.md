@@ -240,7 +240,7 @@ if (json.token && json.token.includes(".")) {
 
 You can test all backend endpoints using our Postman collection:
 
-- [📦 Download Collection JSON](/postman/Ecommerce_Application.postman_collection.json)
+- [📦 Download Collection JSON](SpringBoot-Ecommerce-Backend/tree/main/ecommerce/postman/Ecommerce_Application.postman_collection.json)
 - [🔗 View on Postman](https://saurabhgore44-134748.postman.co/workspace/Saurabh-Gore's-Workspace~15a1118a-a753-4318-8a61-4c8955de6b2f/collection/49247456-f033d9b7-9428-4546-b49a-915a8d077799?action=share&creator=49247456&active-environment=49247456-d3e13478-fc7e-4d46-96fb-484b4217bce2)
 
 > Includes endpoints for users, products, cart, orders, payments, and admin metrics.
